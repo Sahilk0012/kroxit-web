@@ -59,8 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 const depth = (z + 1) / 2;                 // 0 back .. 1 front
                 const sx = cx + x * R, sy = cy + yy * R;
                 const rad = (0.5 + depth * 1.7) * devicePixelRatio;
-                if (depth > 0.55) {                        // front hemisphere: orange accents
-                    ctx.fillStyle = `rgba(255,120,40,${0.15 + (depth - 0.55) * 1.4})`;
+                if (depth > 0.55) {                        // front hemisphere: brand blue accents
+                    ctx.fillStyle = `rgba(61,106,179,${0.15 + (depth - 0.55) * 1.4})`;
                 } else {
                     ctx.fillStyle = `rgba(210,222,240,${0.10 + depth * 0.55})`;
                 }
@@ -72,59 +72,6 @@ document.addEventListener("DOMContentLoaded", () => {
             requestAnimationFrame(draw);
         };
         draw();
-    }
-
-    /* 2c. Trio particle panels ---------------------------------------------- */
-    document.querySelectorAll(".tcard-particles").forEach(cv => {
-        const ctx = cv.getContext("2d");
-        const draw = () => {
-            const w = cv.clientWidth, h = cv.clientHeight, dpr = devicePixelRatio;
-            cv.width = w * dpr; cv.height = h * dpr;
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-            ctx.clearRect(0, 0, w, h);
-            ctx.fillStyle = "rgba(255,255,255,0.75)";
-            const cx = w / 2, cy = h / 2, R = Math.min(w, h) / 2 - 4;
-            const mode = cv.dataset.mode;
-            if (mode === "burst") {
-                const rays = 40;
-                for (let i = 0; i < rays; i++) {
-                    const a = (i / rays) * 6.283 + Math.sin(i) * 0.15;
-                    const len = R * (0.4 + 0.6 * Math.abs(Math.sin(i * 2.4)));
-                    ctx.strokeStyle = "rgba(255,255,255,0.55)";
-                    ctx.lineWidth = 1;
-                    ctx.beginPath();
-                    ctx.moveTo(cx, cy);
-                    ctx.quadraticCurveTo(cx + Math.cos(a) * len * 0.5, cy + Math.sin(a) * len * 0.5,
-                                          cx + Math.cos(a) * len, cy + Math.sin(a) * len);
-                    ctx.stroke();
-                }
-                ctx.fillRect(cx - 3, cy - 3, 6, 6);
-            } else {
-                // dense grid-circle vs. sparse scatter-circle, both Fibonacci-packed
-                const N = mode === "grid" ? 900 : 260;
-                const golden = Math.PI * (3 - Math.sqrt(5));
-                for (let i = 0; i < N; i++) {
-                    const t = i / N, r = Math.sqrt(t) * R, a = i * golden;
-                    const x = cx + Math.cos(a) * r, y = cy + Math.sin(a) * r;
-                    const size = mode === "grid" ? 1.4 : 1.8 + Math.random() * 1.4;
-                    ctx.globalAlpha = mode === "grid" ? (0.25 + t * 0.6) : (0.3 + Math.random() * 0.5);
-                    ctx.fillRect(x, y, size, size);
-                }
-                ctx.globalAlpha = 1;
-            }
-        };
-        draw();
-        addEventListener("resize", draw);
-    });
-
-    /* 2d. Ops tabs ------------------------------------------------------------ */
-    const opsTabs = document.querySelectorAll(".ops-tab");
-    if (opsTabs.length) {
-        opsTabs.forEach(tab => tab.addEventListener("click", () => {
-            opsTabs.forEach(t => { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
-            tab.classList.add("active"); tab.setAttribute("aria-selected", "true");
-            document.querySelectorAll(".ops-panel").forEach(p => p.hidden = p.dataset.panel !== tab.dataset.tab);
-        }));
     }
 
     /* 3. Scroll reveal ------------------------------------------------------ */

@@ -1,8 +1,0 @@
-<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="KroxIT">
-  <rect width="48" height="48" rx="4" fill="#1b1f27"/>
-  <g stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M17 13 V35" stroke="#ffffff"/>
-    <path d="M31 13 L20 24" stroke="#ffffff"/>
-    <path d="M20 24 L31 35" stroke="#ff6a00"/>
-  </g>
-</svg>
