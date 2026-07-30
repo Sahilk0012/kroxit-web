@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact KroxIT Solutions and read answers to common questions.">
+    <title>Contact | KroxIT Solutions</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css?v=4">
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo"><img src="assets/logo.svg" alt="KroxIT" class="logo-img"><span>KroxIT</span></a>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="services.html">Services</a>
+                <a href="amc.html">AMC Plans</a>
+                <a href="book.html">Book Repair</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+            <div class="nav-actions">
+                <a href="book.html" class="btn btn-primary btn-sm">Get Ticket</a>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero">
+            <div class="container">
+                <div class="page-hero-panel">
+                    <span class="eyebrow on-dark">Contact</span>
+                    <h1 class="display">Let's talk about your setup</h1>
+                    <p class="lead center">Tell us what you're planning or what's broken. We usually reply within a few business hours.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container contact-grid">
+                <!-- Info -->
+                <div class="reveal">
+                    <h2 class="h2 mb-3">Reach us directly</h2>
+                    <p class="lead mb-4">Prefer a quick chat first? Use any of the channels below, or fill the form and we'll come to you.</p>
+                    <div class="info-card">
+                        <div class="info-ic"><i data-lucide="phone"></i></div>
+                        <div><h4>Call the desk</h4><p>+91 12345 67890 — Mon to Sat, 9am–8pm</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-ic"><i data-lucide="mail"></i></div>
+                        <div><h4>Email us</h4><p>hello@kroxit.com — we reply within hours</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-ic"><i data-lucide="map-pin"></i></div>
+                        <div><h4>Visit</h4><p>KroxIT HQ, Sector 21, Business Park</p></div>
+                    </div>
+                    <div class="info-card">
+                        <div class="info-ic"><i data-lucide="clock"></i></div>
+                        <div><h4>Emergency SLA</h4><p>24/7 for AMC clients on active contracts</p></div>
+                    </div>
+                </div>
+
+                <!-- Form -->
+                <div class="panel reveal">
+                    <form id="contactForm">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="cName">Name</label>
+                                <input class="input" id="cName" placeholder="Your name" required>
+                            </div>
+                            <div class="field">
+                                <label for="cPhone">Phone</label>
+                                <input class="input" id="cPhone" type="tel" placeholder="Phone number" required>
+                            </div>
+                            <div class="field full">
+                                <label for="cEmail">Email</label>
+                                <input class="input" id="cEmail" type="email" placeholder="you@company.com" required>
+                            </div>
+                            <div class="field full">
+                                <label for="cService">What do you need?</label>
+                                <select class="input" id="cService">
+                                    <option>General enquiry</option>
+                                    <option>Networking setup</option>
+                                    <option>Firewall &amp; security</option>
+                                    <option>CCTV &amp; surveillance</option>
+                                    <option>Biometrics</option>
+                                    <option>Device repair</option>
+                                    <option>AMC contract</option>
+                                </select>
+                            </div>
+                            <div class="field full">
+                                <label for="cMessage">Message</label>
+                                <textarea class="input" id="cMessage" placeholder="Tell us a bit more…" required style="min-height: 20px;"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Send message <i data-lucide="send"></i></button>
+                        <p class="form-note" id="contactStatus" role="status"></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section-sm" id="faq">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">FAQ</span>
+                    <h2 class="h2">Questions, answered</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item reveal">
+                        <div class="faq-question">Do you really pick up devices from home? <i data-lucide="plus" class="faq-icon"></i></div>
+                        <div class="faq-answer"><p>Yes. For laptop, desktop, and router repairs we offer free contact-free pickup and drop-off within our service areas — you never have to visit a store.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question">How fast is emergency support? <i data-lucide="plus" class="faq-icon"></i></div>
+                        <div class="faq-answer"><p>AMC clients get guaranteed onsite response under signed SLAs — as fast as 2 hours on the Enterprise plan. Non-contract requests are handled on a best-effort priority basis.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question">Can you handle multi-building networks? <i data-lucide="plus" class="faq-icon"></i></div>
+                        <div class="faq-answer"><p>Absolutely. We design fiber backbones, structured cabling, VLAN segmentation, and high-density mesh Wi-Fi for multi-storey and multi-site commercial setups.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question">Is the AMC estimate the final price? <i data-lucide="plus" class="faq-icon"></i></div>
+                        <div class="faq-answer"><p>It's an indicative figure to help you plan. Final pricing is confirmed after a free site survey where we validate device counts and access needs.</p></div>
+                    </div>
+                    <div class="faq-item reveal">
+                        <div class="faq-question">Do repairs come with a warranty? <i data-lucide="plus" class="faq-icon"></i></div>
+                        <div class="faq-answer"><p>Yes — we use genuine parts and back every repair with a warranty. You'll get a transparent diagnostic and quote before any work begins.</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <a href="index.html" class="logo"><img src="assets/logo.svg" alt="KroxIT" class="logo-img"><span>KroxIT</span></a>
+                    <p class="footer-brand">Engineers of resilient IT ecosystems, security perimeters, and zero-downtime setups.</p>
+                </div>
+                <div><h4>Services</h4><div class="footer-links"><a href="services.html#networking">Networking</a><a href="services.html#firewall">Firewall Security</a><a href="services.html#cctv">CCTV & Surveillance</a><a href="services.html#biometrics">Biometrics</a></div></div>
+                <div><h4>Support</h4><div class="footer-links"><a href="book.html">Book a Repair</a><a href="amc.html">AMC Estimator</a><a href="contact.html#faq">FAQs</a><a href="contact.html">Consultations</a></div></div>
+                <div><h4>Get in touch</h4><div class="footer-links"><a href="tel:+911234567890">+91 12345 67890</a><a href="mailto:hello@kroxit.com">hello@kroxit.com</a><a href="contact.html">Book a consultation</a></div></div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 KroxIT Solutions. All rights reserved.</p>
+                <div class="socials"><a href="#" aria-label="GitHub"><i data-lucide="github"></i></a><a href="#" aria-label="Twitter"><i data-lucide="twitter"></i></a><a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a></div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/918360853441" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.34.65 4.522 1.78 6.395L4 29l7.805-1.75A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm0 21.75c-1.98 0-3.83-.55-5.41-1.51l-.388-.23-4.63 1.04 1.01-4.51-.253-.4A9.71 9.71 0 0 1 5.25 15c0-5.93 4.824-10.75 10.754-10.75S26.75 9.07 26.75 15 21.934 24.75 16.004 24.75Zm5.938-8.07c-.326-.163-1.926-.95-2.225-1.058-.298-.108-.516-.163-.733.163-.217.326-.84 1.058-1.03 1.276-.19.217-.38.244-.706.082-.326-.163-1.377-.508-2.623-1.618-.97-.865-1.625-1.933-1.815-2.26-.19-.326-.02-.502.143-.664.147-.146.326-.38.489-.57.163-.19.217-.326.326-.543.109-.217.054-.407-.027-.57-.082-.163-.733-1.767-1.005-2.42-.264-.636-.532-.55-.733-.56l-.624-.011c-.217 0-.57.082-.868.407-.298.326-1.14 1.114-1.14 2.717 0 1.603 1.167 3.153 1.33 3.37.163.217 2.297 3.507 5.565 4.918.778.336 1.385.537 1.858.688.78.248 1.49.213 2.052.13.626-.094 1.926-.787 2.198-1.548.272-.76.272-1.412.19-1.548-.081-.136-.298-.217-.624-.38Z"/></svg>
+    </a>
+    <script>lucide.createIcons();</script>
+    <script src="app.js"></script>
+</body>
+</html>
