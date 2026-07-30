@@ -152,7 +152,8 @@ document.addEventListener("DOMContentLoaded", () => {
             cctv: "CCTV Surveillance Grid",
             biometrics: "Biometric Access Systems",
             firewall: "Gateway Firewall Configuration",
-            amc: "Annual Maintenance Contract (AMC)"
+            amc: "Annual Maintenance Contract (AMC)",
+            server: "Server, Data Center & Cloud Services"
         };
 
         // Preselect from ?service=
