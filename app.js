@@ -141,13 +141,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const progressBar = document.getElementById("progressBar");
         const stepLabel = document.getElementById("wizStepLabel");
         const choices = document.querySelectorAll(".choice");
-        const repairFields = document.getElementById("repairSpecificFields");
-        const formStepTitle = document.getElementById("formStepTitle");
 
         let selectedService = "repair";
 
         const serviceLabels = {
-            repair: "Home Device Repair (Free Pickup/Drop)",
+            repair: "Home Device Repair Service",
             networking: "Whole-Building Network Setup",
             cctv: "CCTV Surveillance Grid",
             biometrics: "Biometric Access Systems",
@@ -164,18 +162,10 @@ document.addEventListener("DOMContentLoaded", () => {
             if (match) { match.classList.add("selected"); selectedService = q; }
         }
 
-        const syncSpecifics = svc => {
-            const isRepair = svc === "repair";
-            repairFields.style.display = isRepair ? "grid" : "none";
-            formStepTitle.innerText = isRepair ? "Pickup details" : "Project details";
-        };
-        syncSpecifics(selectedService);
-
         choices.forEach(card => card.addEventListener("click", () => {
             choices.forEach(c => c.classList.remove("selected"));
             card.classList.add("selected");
             selectedService = card.getAttribute("data-value");
-            syncSpecifics(selectedService);
         }));
 
         const steps = [step1, step2, step3];
@@ -205,15 +195,6 @@ document.addEventListener("DOMContentLoaded", () => {
             document.getElementById("ticketIdDisplay").innerText = rid;
             document.getElementById("summaryName").innerText = name.value;
             document.getElementById("summaryService").innerText = serviceLabels[selectedService] || selectedService;
-
-            const addrRow = document.getElementById("summaryAddressRow");
-            if (selectedService === "repair") {
-                const a = document.getElementById("pickupAddress").value;
-                addrRow.style.display = "flex";
-                document.getElementById("summaryAddress").innerText = a || "—";
-            } else {
-                addrRow.style.display = "none";
-            }
             goTo(3);
         });
     }
