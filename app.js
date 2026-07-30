@@ -208,10 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const addrRow = document.getElementById("summaryAddressRow");
             if (selectedService === "repair") {
                 const a = document.getElementById("pickupAddress").value;
-                const c = document.getElementById("city").value;
-                const p = document.getElementById("postcode").value;
                 addrRow.style.display = "flex";
-                document.getElementById("summaryAddress").innerText = [a, c, p].filter(Boolean).join(", ") || "—";
+                document.getElementById("summaryAddress").innerText = a || "—";
             } else {
                 addrRow.style.display = "none";
             }
