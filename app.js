@@ -199,34 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    /* 6. AMC quote builder (amc.html) --------------------------------------- */
-    const nodeInput = document.getElementById("nodeCount");
-    const switchInput = document.getElementById("switchCount");
-    const cctvInput = document.getElementById("cctvCount");
-    const slaSelect = document.getElementById("slaTier");
-    const summaryDisplay = document.getElementById("calcSummaryDisplay");
-    const quoteBtn = document.getElementById("calcQuoteBtn");
-
-    if (nodeInput && switchInput && cctvInput && slaSelect && summaryDisplay && quoteBtn) {
-        const slaLabels = { "24": "next business day", "8": "within 8 hours", "2": "within 2 hours" };
-        const update = () => {
-            const nodes = parseInt(nodeInput.value, 10) || 0;
-            const switches = parseInt(switchInput.value, 10) || 0;
-            const cams = parseInt(cctvInput.value, 10) || 0;
-            const slaLabel = slaLabels[slaSelect.value] || "within 8 hours";
-            summaryDisplay.innerText = nodes + " nodes · " + switches + " switches · " + cams + " cameras";
-            const message = "Hi KroxIT, I'd like an AMC quote for " + nodes + " network nodes, " + switches +
-                " managed switches, " + cams + " CCTV cameras, with a response SLA " + slaLabel + ".";
-            quoteBtn.href = "https://wa.me/918360853441?text=" + encodeURIComponent(message);
-        };
-        [nodeInput, switchInput, cctvInput, slaSelect].forEach(el => {
-            el.addEventListener("input", update);
-            el.addEventListener("change", update);
-        });
-        update();
-    }
-
-    /* 7. Contact form (contact.html) --------------------------------------- */
+    /* 6. Contact form (contact.html) --------------------------------------- */
     const contactForm = document.getElementById("contactForm");
     if (contactForm) {
         contactForm.addEventListener("submit", e => {
