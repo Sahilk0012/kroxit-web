@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# Internal / non-public folders — should ideally be removed from the web root entirely
+# Internal / non-public folders - should ideally be removed from the web root entirely
 Disallow: /errros/
 Disallow: /reference/
 
