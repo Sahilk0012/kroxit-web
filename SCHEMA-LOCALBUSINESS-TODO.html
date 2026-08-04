@@ -1,0 +1,118 @@
+<!--
+=============================================================================
+  KroxIT — LocalBusiness schema (STAGED, NOT YET LIVE)
+
+  This is the single most important piece of markup for Google Map Pack
+  ranking. It is NOT yet on the site because it requires real business data
+  that placeholders would poison.
+
+  TO ACTIVATE:
+    1. Replace every REPLACE_* value below with real data.
+    2. Paste the <script> block into the <head> of EVERY page,
+       directly after the existing Organization block.
+    3. Delete the existing "@type": "Organization" block — this one
+       supersedes it and reuses the same @id, so every Service and
+       Breadcrumb reference keeps working.
+    4. Validate at https://validator.schema.org and
+       https://search.google.com/test/rich-results
+    5. Delete this file.
+
+  WHAT YOU STILL NEED TO SUPPLY:
+    - Real phone number (the site currently shows a placeholder,
+      +91 12345 67890, on all 8 pages — fix that first)
+    - Real email address
+    - Full street address including pincode
+    - Latitude / longitude (right-click your location in Google Maps ->
+      the first item in the menu is the lat,lng — click to copy)
+    - Confirmed opening hours
+    - Live social / GBP URLs
+
+  DO NOT add "aggregateRating" until you have real, verifiable Google
+  reviews. Self-serving review markup without a genuine source is a
+  manual-action risk.
+=============================================================================
+-->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "@id": "https://kroxit.com/#organization",
+  "name": "KroxIT Solutions",
+  "alternateName": "KroxIT",
+  "url": "https://kroxit.com/",
+  "logo": "https://kroxit.com/assets/logo-full.png",
+  "image": "https://kroxit.com/assets/og-image.jpg",
+  "description": "Managed IT services, IT support, networking, security and annual maintenance contracts for businesses across Mohali, Zirakpur, Chandigarh and Panchkula.",
+
+  "telephone": "REPLACE_WITH_REAL_PHONE_E164",
+  "email": "REPLACE_WITH_REAL_EMAIL",
+  "priceRange": "$$",
+
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "REPLACE_WITH_BUILDING_AND_SECTOR",
+    "addressLocality": "Mohali",
+    "addressRegion": "Punjab",
+    "postalCode": "REPLACE_PINCODE",
+    "addressCountry": "IN"
+  },
+
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "REPLACE_LAT",
+    "longitude": "REPLACE_LNG"
+  },
+
+  "areaServed": [
+    { "@type": "City",  "name": "Mohali" },
+    { "@type": "City",  "name": "Zirakpur" },
+    { "@type": "City",  "name": "Chandigarh" },
+    { "@type": "City",  "name": "Panchkula" },
+    { "@type": "Place", "name": "IT City Sector 82, Mohali" },
+    { "@type": "Place", "name": "IT Park, Mohali" }
+  ],
+
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+      "opens": "REPLACE_OPEN_TIME",
+      "closes": "REPLACE_CLOSE_TIME"
+    }
+  ],
+
+  "sameAs": [
+    "REPLACE_GOOGLE_BUSINESS_PROFILE_SHORT_URL",
+    "REPLACE_LINKEDIN_COMPANY_URL",
+    "REPLACE_FACEBOOK_PAGE_URL"
+  ],
+
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "IT Services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Managed IT Services" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Annual Maintenance Contract (AMC)" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Office Networking and LAN Setup" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structured Cabling" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "WiFi and Access Point Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Firewall Configuration" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Network Security" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Server Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Centre Setup" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Cloud Migration and Backup" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Data Backup and Recovery" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Microsoft 365 Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Laptop and Desktop Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "CCTV Installation" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Biometric Access Control" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Printer Setup and Repair" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Remote IT Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "On-site IT Support" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "IT Infrastructure Setup" } }
+    ]
+  }
+}
+</script>

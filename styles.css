@@ -4,7 +4,8 @@
    One stylesheet drives all pages.
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+/* Fonts are preconnected + linked from each page's <head> so they start loading
+   with the document instead of after this stylesheet parses (avoids late FOUT reflow). */
 
 :root {
     --paper: #ffffff;
@@ -52,7 +53,14 @@
 
 /* ---------- Reset & base ---------- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    /* Always reserve the scrollbar track. Without this, a short page (no scrollbar)
+       is ~15px wider than a tall one, so every navigation nudges the layout sideways. */
+    scrollbar-gutter: stable;
+    background: var(--paper);
+}
 body {
     background: var(--paper);
     color: var(--ink);
@@ -61,11 +69,26 @@ body {
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
-    animation: pageIn 0.5s var(--ease);
+    /* Sticky footer: short pages fill the viewport, so page height never "collapses"
+       between navigations. */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
 }
-@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+body > main { flex: 1 0 auto; }
 a { color: inherit; text-decoration: none; }
 img { max-width: 100%; display: block; }
+/* Lucide swaps <i data-lucide> for an <svg> after load — reserve the box up front
+   so icons fade in instead of shoving text around. */
+[data-lucide] { display: inline-block; width: 20px; height: 20px; flex-shrink: 0; vertical-align: middle; }
+
+/* ---------- Page transitions ----------
+   Every page fades in on arrival and out on leaving, so navigation reads as one
+   continuous surface. Opacity only — no transform, so nothing can shift or resize. */
+body { animation: pageIn 0.38s var(--ease) both; }
+@keyframes pageIn { from { opacity: 0; } to { opacity: 1; } }
+html.is-leaving body { animation: none; opacity: 0; transition: opacity 0.18s var(--ease); }
 button, input, select, textarea { font-family: inherit; font-size: inherit; color: inherit; }
 ul { list-style: none; }
 ::selection { background: var(--primary); color: #fff; }
@@ -175,6 +198,9 @@ ul { list-style: none; }
 }
 .nav-container {
     max-width: var(--maxw); margin: 0 auto; padding: 10px 14px 10px 22px;
+    /* Locked height: the bar measures the same on every page even before webfonts
+       land, so the content below never starts high and drop down. */
+    min-height: 64px;
     display: flex; align-items: center; justify-content: space-between;
     background: color-mix(in srgb, var(--paper) 86%, transparent);
     backdrop-filter: blur(18px) saturate(1.5);
@@ -186,11 +212,11 @@ ul { list-style: none; }
 }
 .navbar.scrolled { top: 8px; }
 .navbar.scrolled .nav-container { box-shadow: var(--shadow); }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: -0.02em; }
+.logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; font-family: var(--font-display); font-weight: 800; font-size: 1.22rem; letter-spacing: -0.02em; }
 .logo-img { height: 34px; width: 34px; border-radius: var(--radius-sm); object-fit: cover; }
 .logo span::after { content: '.'; color: var(--primary); }
 .nav-links { display: flex; align-items: center; gap: 30px; }
-.nav-links a { font-family: var(--font-display); font-weight: 600; font-size: 0.94rem; color: var(--ink-2); position: relative; transition: color 0.2s; }
+.nav-links a { font-family: var(--font-display); font-weight: 600; font-size: 0.94rem; color: var(--ink-2); position: relative; transition: color 0.2s; white-space: nowrap; }
 .nav-links a:hover, .nav-links a.active { color: var(--ink); }
 .nav-links a.active::after { content: ''; position: absolute; left: 0; right: 0; bottom: -6px; height: 2px; background: var(--primary-grad); border-radius: var(--radius-pill); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
@@ -236,7 +262,7 @@ ul { list-style: none; }
     background: radial-gradient(circle, rgba(61,106,179,0.16) 0%, transparent 62%);
 }
 .hero-ascii { position: relative; z-index: 1; width: min(54vw, 740px); height: min(54vw, 740px); pointer-events: none; }
-/* navbar on the slate hero */
+/* navbar on the slate hero — the home page keeps its own transparent treatment */
 .home .navbar { top: 0; }
 .home .nav-container {
     background: transparent; border: none; border-radius: 0; box-shadow: none;
@@ -268,8 +294,6 @@ ul { list-style: none; }
     .hero-copy-col { margin-left: auto; margin-right: auto; }
     .hero-ascii { width: 82vw; height: 82vw; }
     .hero-visual::before { width: 86vw; }
-    .home .nav-links { margin: 0; }
-    .home .menu-toggle { background: rgba(255,255,255,0.12); }
 }
 
 /* ---------- Stats ---------- */
@@ -534,10 +558,14 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
     .contact-cta, .page-hero-panel { padding: 40px 28px; }
     .testimonial-media { min-height: 240px; }
 }
-@media (max-width: 640px) {
-    .section { padding: 64px 0; }
+/* Nav drawer — switches over well before the bar can crowd, so the header is the
+   same shape on every page at every width. */
+@media (max-width: 1024px) {
     .nav-links { display: none; }
     .menu-toggle { display: flex; position: relative; z-index: 1500; }
+    /* the home toggle sits on the dark hero, so it needs a light chip instead */
+    .home .nav-links { margin: 0; }
+    .home .menu-toggle { background: rgba(255,255,255,0.12); }
     body.nav-open { overflow: hidden; }
     body.nav-open .navbar { z-index: 1600; }   /* keep the toggle above the drawer */
     /* backdrop-filter on the pill makes it a containing block for position:fixed,
@@ -566,6 +594,11 @@ select.input { appearance: none; background-image: url("data:image/svg+xml,%3Csv
     .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
     .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+}
+@media (max-width: 640px) {
+    .section { padding: 64px 0; }
+    /* logo + CTA + hamburger no longer fit — the drawer carries the CTA */
+    .nav-actions .btn-sm { display: none; }
     .choice-grid, .form-grid, .footer-grid, .stat-cards { grid-template-columns: 1fr; }
     .hero-grid { gap: 20px; }
     .footer-bottom, .contact-cta-foot { flex-direction: column; text-align: center; }

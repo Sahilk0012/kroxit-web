@@ -2,7 +2,60 @@
    KroxIT Solutions — Interactions (app.js)
    ========================================================================== */
 
+/* 0. Page transitions ------------------------------------------------------
+   Fade the current page out before navigating, so every page change reads as one
+   continuous surface instead of a hard swap. The matching fade-in lives in CSS
+   (body { animation: pageIn }). Opacity only — layout never moves. */
+(() => {
+    const root = document.documentElement;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    // Coming back via the back button (bfcache) restores the DOM as-is — make sure
+    // we never restore it mid-fade-out.
+    window.addEventListener("pageshow", () => root.classList.remove("is-leaving"));
+
+    if (reduced) return;
+
+    const isInternal = a => {
+        if (!a || !a.href) return false;
+        if (a.target && a.target !== "_self") return false;
+        if (a.hasAttribute("download")) return false;
+        const url = new URL(a.href, location.href);
+        if (url.protocol !== location.protocol || url.host !== location.host) return false;
+        // Anything that resolves to the page we're already on (in-page anchors,
+        // href="#", the active nav item): let the browser handle it, don't fade.
+        if (url.pathname === location.pathname && url.search === location.search) return false;
+        return true;
+    };
+
+    document.addEventListener("click", e => {
+        if (e.defaultPrevented || e.button !== 0) return;
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        const link = e.target.closest("a");
+        if (!isInternal(link)) return;
+
+        e.preventDefault();
+        root.classList.add("is-leaving");
+
+        let done = false;
+        const go = () => {
+            if (done) return;
+            done = true;
+            location.href = link.href;
+            // Fail-safe: if the navigation never takes (blocked, offline, bad path),
+            // fade the page back in rather than leaving the visitor on a blank screen.
+            setTimeout(() => root.classList.remove("is-leaving"), 1200);
+        };
+        // Navigate when the fade finishes, with a timer as a backstop.
+        document.body.addEventListener("transitionend", go, { once: true });
+        setTimeout(go, 260);
+    });
+})();
+
 document.addEventListener("DOMContentLoaded", () => {
+
+    /* 0b. Icons ------------------------------------------------------------- */
+    if (window.lucide) lucide.createIcons();
 
     /* 1. Navbar scroll state ------------------------------------------------ */
     const navbar = document.getElementById("navbar");

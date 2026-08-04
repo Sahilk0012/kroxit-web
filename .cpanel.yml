@@ -1,0 +1,18 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home3/kroxitco/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R assets $DEPLOYPATH/
+    - /bin/cp index.html $DEPLOYPATH/
+    - /bin/cp services.html $DEPLOYPATH/
+    - /bin/cp local-repair.html $DEPLOYPATH/
+    - /bin/cp networking-services.html $DEPLOYPATH/
+    - /bin/cp server-cloud-services.html $DEPLOYPATH/
+    - /bin/cp amc.html $DEPLOYPATH/
+    - /bin/cp book.html $DEPLOYPATH/
+    - /bin/cp contact.html $DEPLOYPATH/
+    - /bin/cp app.js $DEPLOYPATH/
+    - /bin/cp styles.css $DEPLOYPATH/
+    - /bin/cp robots.txt $DEPLOYPATH/
+    - /bin/cp sitemap.xml $DEPLOYPATH/
