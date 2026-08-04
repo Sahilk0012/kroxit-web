@@ -18,3 +18,4 @@ deployment:
     - /bin/cp sitemap.xml $DEPLOYPATH/
     - /bin/cp llms.txt $DEPLOYPATH/
     - /bin/cp maintenance.html $DEPLOYPATH/
+    - /bin/cp maintenance.php $DEPLOYPATH/
