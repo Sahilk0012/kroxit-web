@@ -1,0 +1,22 @@
+# KroxIT Solutions
+
+> KroxIT provides managed IT services, IT support, networking, security, server and cloud infrastructure, and laptop/desktop repair for businesses across Mohali, Zirakpur, Chandigarh and Panchkula (Chandigarh Tricity), including the IT City Sector 82 and IT Park corridors in Mohali.
+
+KroxIT works with offices, startups, schools, hospitals, hotels, warehouses, manufacturing units and retail businesses. Services are delivered on-site by certified engineers, with Annual Maintenance Contracts (AMC) covering scheduled audits, preventive maintenance, patching and priority SLA response.
+
+## Services
+
+- [IT Services Overview](https://kroxit.com/services.html): Networking, firewalls, CCTV, biometric access, server & cloud services, laptop repair and AMC.
+- [Networking & Office LAN Setup](https://kroxit.com/networking-services.html): Structured cabling, VLAN segmentation, managed switching, fibre backbone and mesh Wi-Fi installation.
+- [Laptop & Desktop Repair](https://kroxit.com/local-repair.html): Doorstep repair with certified engineers, genuine parts and warranty.
+- [Server & Cloud Services](https://kroxit.com/server-cloud-services.html): Server installation, hardware repair, data centre setup, cloud migration and backup.
+- [AMC Plans](https://kroxit.com/amc.html): Annual maintenance contracts with scheduled audits, preventive replacement and priority SLA response.
+
+## Company
+
+- [Contact](https://kroxit.com/contact.html): Phone, WhatsApp, email and a contact form.
+- [Book a Consultation](https://kroxit.com/book.html): Free on-site IT consultation booking.
+
+## Service area
+
+Mohali, Zirakpur, Chandigarh, Panchkula, IT City Sector 82 (Mohali), IT Park (Mohali), and the wider Chandigarh Tricity.
