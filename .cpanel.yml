@@ -6,6 +6,7 @@ deployment:
     - /bin/cp -R assets $DEPLOYPATH/
     - /bin/cp index.html $DEPLOYPATH/
     - /bin/cp services.html $DEPLOYPATH/
+    - /bin/cp academy.html $DEPLOYPATH/
     - /bin/cp local-repair.html $DEPLOYPATH/
     - /bin/cp networking-services.html $DEPLOYPATH/
     - /bin/cp server-cloud-services.html $DEPLOYPATH/

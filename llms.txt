@@ -12,6 +12,10 @@ KroxIT works with offices, startups, schools, hospitals, hotels, warehouses, man
 - [Server & Cloud Services](https://kroxit.com/server-cloud-services.html): Server installation, hardware repair, data centre setup, cloud migration and backup.
 - [AMC Plans](https://kroxit.com/amc.html): Annual maintenance contracts with scheduled audits, preventive replacement and priority SLA response.
 
+## KroxIT Academy
+
+- [KroxIT Academy](https://kroxit.com/academy.html): Hands-on IT training program in development, taught by working KroxIT engineers. Planned courses: IT Support Engineer, Networking Fundamentals, Windows Server Administration, Microsoft 365 Administration, Firewall Administration, Fortinet, SonicWall, pfSense, CCTV Installation, Biometric Installation. Course dates and enrollment are not yet open; visitors can join a waitlist.
+
 ## Company
 
 - [Contact](https://kroxit.com/contact.html): Phone, WhatsApp, email and a contact form.

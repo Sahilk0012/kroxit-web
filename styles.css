@@ -360,6 +360,15 @@ ul { list-style: none; }
     .trust-item { padding: 8px 14px; font-size: 0.8rem; }
 }
 
+/* ---------- Academy status banner (honest "in progress" notice) ---------- */
+.academy-status {
+    display: flex; align-items: flex-start; gap: 14px;
+    background: var(--primary-soft); border: 1px solid var(--primary-soft-2);
+    border-radius: var(--radius-lg); padding: 18px 22px; max-width: 900px; margin: 0 auto;
+}
+.academy-status i { width: 20px; height: 20px; color: var(--primary); flex-shrink: 0; margin-top: 2px; }
+.academy-status p { color: var(--ink-2); font-size: 0.92rem; line-height: 1.6; }
+
 /* ---------- Services page ---------- */
 .svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .svc-card { background: var(--paper-2); border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 30px; transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease); }
