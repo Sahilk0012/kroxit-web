@@ -352,6 +352,15 @@ ul { list-style: none; }
     .trust-item { padding: 8px 14px; font-size: 0.8rem; }
 }
 
+/* ---------- Process steps (service pages) ---------- */
+.process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; counter-reset: process; }
+.process-step { text-align: center; position: relative; }
+.process-num { width: 52px; height: 52px; border-radius: 50%; background: var(--primary-grad); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-mega); font-size: 1.3rem; margin: 0 auto 16px; box-shadow: var(--shadow-glow); }
+.process-step h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.05rem; margin-bottom: 8px; }
+.process-step p { color: var(--ink-2); font-size: 0.9rem; }
+@media (max-width: 860px) { .process-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .process-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Academy status banner (honest "in progress" notice) ---------- */
 .academy-status {
     display: flex; align-items: flex-start; gap: 14px;
