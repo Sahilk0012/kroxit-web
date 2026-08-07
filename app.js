@@ -69,7 +69,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuToggle = document.getElementById("menuToggle");
     const navLinks = document.getElementById("navLinks");
     if (menuToggle && navLinks) {
+        const closeNav = () => {
+            navLinks.classList.toggle("open", false);
+            menuToggle.classList.toggle("is-open", false);
+            document.body.classList.toggle("nav-open", false);
+        };
         const setNav = open => {
+            // If motion.js is loaded on this page, let it play a fade-out first —
+            // display:none can't be transitioned, so this is the only way to make
+            // closing feel as smooth as the CSS-driven open. Falls back to the
+            // instant toggle everywhere else.
+            if (!open && window.__animateNavClose) {
+                window.__animateNavClose(closeNav);
+                return;
+            }
             navLinks.classList.toggle("open", open);
             menuToggle.classList.toggle("is-open", open);
             document.body.classList.toggle("nav-open", open);
