@@ -10,11 +10,19 @@
 import { animate, inView, hover, press, stagger } from "framer-motion/dom";
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const html = document.documentElement;
+// If .js-motion is already gone, the inline <head> timeout fired first — this
+// script arrived too late (slow network) and the fallback already made every
+// hero/.mo-reveal element visible via plain CSS. Skip the entrance animations
+// entirely in that case: animating opacity [0,1] now would flash content that's
+// already showing back to invisible first. Hover/tap/nav-close still get wired
+// up below regardless, since those aren't a "did we miss the window" concern.
+const missedEntrance = !html.classList.contains("js-motion");
 
 // Tell the inline <head> snippet we loaded successfully — it can stop
 // watching for the timeout fallback.
 window.__motionReady = true;
-document.documentElement.classList.remove("js-motion");
+html.classList.remove("js-motion");
 
 /* 1. Hero entrance: fade-in + slide-up, staggered ------------------------- */
 const heroEls = ["hero-title", "hero-lead", "hero-btns"]
@@ -22,7 +30,7 @@ const heroEls = ["hero-title", "hero-lead", "hero-btns"]
     .filter(Boolean);
 
 if (heroEls.length) {
-    if (reduced) {
+    if (reduced || missedEntrance) {
         heroEls.forEach(el => { el.style.opacity = "1"; });
     } else {
         animate(
@@ -37,7 +45,7 @@ if (heroEls.length) {
 const revealEls = Array.from(document.querySelectorAll(".mo-reveal"));
 
 if (revealEls.length) {
-    if (reduced) {
+    if (reduced || missedEntrance) {
         revealEls.forEach(el => { el.style.opacity = "1"; el.style.transform = "none"; });
     } else {
         // Elements sharing a `.svc-grid` parent are animated together (staggered);

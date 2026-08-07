@@ -93,10 +93,12 @@
            before paint). If motion.js never loads — offline, CDN blocked — the timeout
            in that inline script removes this class so the hero simply stays visible. */
         .js-motion .hero-title, .js-motion .hero-lead, .js-motion .hero-btns { opacity: 0; }
-        /* Below-the-fold sections/cards: same "hidden until JS reveals it" approach
-           the site's existing .reveal class already uses — safe since it's off-screen
-           on load either way. */
-        .mo-reveal { opacity: 0; }
+        /* Below-the-fold sections/cards are hidden ONLY while .js-motion is present,
+           same as the hero above — never unconditionally, because if motion.js fails
+           to load (CDN blocked, 404, offline) there would be nothing left to remove
+           this opacity and the entire homepage below the hero would stay invisible
+           forever. The timeout below is what guarantees that never happens. */
+        .js-motion .mo-reveal { opacity: 0; }
     </style>
     <script>
         (function () {
